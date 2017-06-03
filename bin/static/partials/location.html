@@ -1,0 +1,9 @@
+
+<div class="container">
+<form novalidate>
+
+voitures : <select ng-options="item.immatriculation for item in voitures" ng-model="selected"><br>
+<input type="submit" ng-click="rent(selected)" value="louer">
+
+</form>
+</div>

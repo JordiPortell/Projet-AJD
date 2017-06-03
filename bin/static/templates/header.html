@@ -1,0 +1,40 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+            <a class="navbar-brand" href="#/">A LA BONNE FRANQUETTE</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                	<a href="#/services">Services</a>
+                </li>
+                <li>
+                	<a href="#/subscription">Abonnements</a>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Compte <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#/login">Connexion</a>
+                        </li>
+                        <li><a href="#/register">Inscription</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class='container-fluid typeahead-demo' ng-controller="PageCtrl">
+   				<input type="text" ng-model="selected" uib-typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control">
+   			</div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
