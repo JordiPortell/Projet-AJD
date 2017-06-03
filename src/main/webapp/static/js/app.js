@@ -21,6 +21,7 @@ angular.module('tutorialWebApp', [
 	.when("/client", {templateUrl: "partials/home.html", controller: "PageCtrl"})
 	.when("/register", {templateUrl: "modules/authentication/views/register.html", controller: "PageCtrl"})
     .when("/subscription", {templateUrl: "partials/subscription.html", controller: "PageCtrl"})
+    .when("/inscription", {templateUrl: "partials/pricing.html", controller: "NewClientCtrl"})
 
    
     // else 404
@@ -38,7 +39,7 @@ angular.module('tutorialWebApp', [
      $rootScope.$on('$locationChangeStart', function (event, next, current) {
          // redirect to login page if not logged in
          if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
-             $location.path('/login');
+             //$location.path('/login');
          }
      });
  }]);

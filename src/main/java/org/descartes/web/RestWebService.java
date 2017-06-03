@@ -53,9 +53,16 @@ public class RestWebService {
 	
 	@RequestMapping(value = "/Client", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.OK)
-	public void postClient(@RequestBody Client personne){
-		System.out.println(personne);
-		serviceClient.addClient(personne);
+	public void postClient(@RequestBody String Nom,String Prenom,String adresse,String login, String password){
+		System.out.println(Nom);
+		//serviceClient.addClient(personne);
+	}
+	
+	@RequestMapping(value = "/authentification", method = RequestMethod.POST)
+	@ResponseStatus(HttpStatus.OK)
+	public void login(@RequestBody String login,String password){
+		System.out.println(login);
+		serviceClient.login(login,password);
 	}
 	
 }

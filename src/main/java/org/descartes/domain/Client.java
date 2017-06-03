@@ -39,6 +39,37 @@ public class Client {
 		this.prenom = prenom;
 		this.adresse = adresse;
 	}
+	
+	
+
+	public void setListCommande(List<Commande> listCommande) {
+		ListCommande = listCommande;
+	}
+
+	public Client(String nom, String prenom, String adresse, String login, String password) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.adresse = adresse;
+		this.login = login;
+		this.password = password;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	public String getNom() {
 		return nom;

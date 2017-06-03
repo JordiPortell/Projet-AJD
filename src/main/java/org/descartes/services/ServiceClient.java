@@ -61,7 +61,7 @@ public class ServiceClient implements IServiceClient{
 			// ouvrir session sans transaction (1 seul message) et acquitement automatique
 			QueueSession session = connection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
 			connection.start();
-			// créer et envoyer message
+			// crï¿½er et envoyer message
 			TextMessage message = session.createTextMessage("bonjour");
 			QueueSender sender = session.createSender(queue);
 			sender.send(message);
@@ -72,5 +72,13 @@ public class ServiceClient implements IServiceClient{
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+	}
+	
+	public boolean login(String login, String password){
+		List<Client> liste = entityManager.createQuery( "SELECT p FROM Client p WHERE p.login LIKE :namePerson" )
+				.setParameter( "namePerson", login)
+				.getResultList();
+		Client cli =liste.get(0);
+		return password.equals(cli.getPassword());
 	}
 }
