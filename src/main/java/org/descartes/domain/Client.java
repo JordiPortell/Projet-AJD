@@ -39,13 +39,6 @@ public class Client {
 		this.prenom = prenom;
 		this.adresse = adresse;
 	}
-	
-	
-
-	public void setListCommande(List<Commande> listCommande) {
-		ListCommande = listCommande;
-	}
-
 	public Client(String nom, String prenom, String adresse, String login, String password) {
 		super();
 		this.nom = nom;
@@ -54,6 +47,13 @@ public class Client {
 		this.login = login;
 		this.password = password;
 	}
+	
+
+	public void setListCommande(List<Commande> listCommande) {
+		ListCommande = listCommande;
+	}
+
+	
 
 	public String getLogin() {
 		return login;

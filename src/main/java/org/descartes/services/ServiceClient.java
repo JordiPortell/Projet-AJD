@@ -44,13 +44,18 @@ public class ServiceClient implements IServiceClient{
 		return liste;
 	}
 	
-	public void addClient(Client client){
+	public void addClient(String Nom,String Prenom,String adresse,String login, String password){
+		
+		Client client = new Client(Nom,Prenom,adresse,login,password);
+		
+		System.out.println(client.getNom());
+		
 		EntityTransaction tx = entityManager.getTransaction();
 		tx.begin();
 		entityManager.persist(client);
 		tx.commit();
 		
-		try{
+		/*try{
 			
 			ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContextJMS.xml");
 			QueueConnectionFactory factory = (QueueConnectionFactory) applicationContext.getBean("connectionFactory");
@@ -71,7 +76,7 @@ public class ServiceClient implements IServiceClient{
 			
 		}catch(Exception e){
 			e.printStackTrace();
-		}
+		}*/
 	}
 	
 	public boolean login(String login, String password){

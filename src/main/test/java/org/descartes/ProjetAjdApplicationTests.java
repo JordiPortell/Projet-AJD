@@ -29,7 +29,7 @@ public class ProjetAjdApplicationTests {
 		ServiceClient servicecli = new ServiceClient();
 		Client cli1 = new Client("Dupont","Christophe","7 rue de la mairie");
 		Commande c1 = new Commande(cli1);
-		servicecli.addClient(cli1); 
+		//servicecli.addClient(cli1); 
 		cli1.addCommande(c1);
 		cli1.getListCommande();
 		System.out.println(cli1.toString());

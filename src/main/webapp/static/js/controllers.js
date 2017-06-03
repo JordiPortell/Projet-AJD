@@ -24,10 +24,11 @@ VenteControllers.controller('BlogCtrl',function($scope,$http,$routeParams) {
 
 VenteControllers.controller('NewClientCtrl',function($scope,$http,$routeParams) {
 	console.log($scope.nom);
-	$http.post('http://localhost:8080/client',$scope.nom,$scope.prenom,$scope.adresse,$scope.login,$scope.password).
+	$http.post('http://localhost:8080/inscription',$scope.name,$scope.prenom,$scope.adresse,$scope.login,$scope.password).
 	  success(function(data, status, headers, config) {
 			//$scope.produits=data;
 			//console.log(data);
+		  alert("enregistré");
 	  }).
 	  error(function(data, status, headers, config) {
 	  });
