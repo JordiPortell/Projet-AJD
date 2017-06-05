@@ -2,7 +2,7 @@
 
 //declare modules
 angular.module('Authentication', []);
-angular.module('VenteControllers',[]);
+angular.module('VenteControllers',['ngRoute']);
 angular.module('tutorialWebApp', [
  'Authentication',
  'ngRoute',
@@ -16,14 +16,13 @@ angular.module('tutorialWebApp', [
 		templateUrl: 'modules/authentication/views/login.html'
 	})
   	.when("/", {templateUrl: "partials/home.html", controller: "PageCtrl"})
+  	//.when("/inscription", {templateUrl: "partials/home.html", controller: "NewClientCtrl"})
 	.when("/product", {templateUrl: "partials/product.html", controller: "PageCtrl"})
     .when("/product/:id", {templateUrl: "partials/product.html", controller: "ProductCtrl"})
 	.when("/client", {templateUrl: "partials/home.html", controller: "PageCtrl"})
 	.when("/register", {templateUrl: "modules/authentication/views/register.html", controller: "PageCtrl"})
     .when("/subscription", {templateUrl: "partials/subscription.html", controller: "PageCtrl"})
-    .when("/inscription", {templateUrl: "partials/pricing.html", controller: "NewClientCtrl"})
-
-   
+   // .when("/inscription", {templateUrl: "partials/home.html", controller: "NewClientCtrl"})
     // else 404
     .otherwise({ redirectTo: '/login' });
 }])
@@ -38,8 +37,9 @@ angular.module('tutorialWebApp', [
 
      $rootScope.$on('$locationChangeStart', function (event, next, current) {
          // redirect to login page if not logged in
-         if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
-             //$location.path('/login');
+         if ($location.path() == '/inscription' ) {
+             //&& !$rootScope.globals.currentUser
+        	 $location.path('/');
          }
      });
  }]);

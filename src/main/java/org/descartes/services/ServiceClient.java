@@ -44,39 +44,21 @@ public class ServiceClient implements IServiceClient{
 		return liste;
 	}
 	
-	public void addClient(String Nom,String Prenom,String adresse,String login, String password){
+	public void addClient(String nom,String prenom,String adresse,String login, String password){
 		
-		Client client = new Client(Nom,Prenom,adresse,login,password);
-		
-		System.out.println(client.getNom());
+		System.out.println();
+		String abonnement = "aucun";
+		Client client = new Client(nom,prenom,adresse, login, password,abonnement);
 		
 		EntityTransaction tx = entityManager.getTransaction();
 		tx.begin();
-		entityManager.persist(client);
-		tx.commit();
 		
-		/*try{
-			
-			ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContextJMS.xml");
-			QueueConnectionFactory factory = (QueueConnectionFactory) applicationContext.getBean("connectionFactory");
-			
-			Queue queue = (Queue) applicationContext.getBean("queue");
-			// connection au message broker
-			QueueConnection connection = factory.createQueueConnection();
-			// ouvrir session sans transaction (1 seul message) et acquitement automatique
-			QueueSession session = connection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
-			connection.start();
-			// cr�er et envoyer message
-			TextMessage message = session.createTextMessage("bonjour");
-			QueueSender sender = session.createSender(queue);
-			sender.send(message);
-			
-			session.close();
-			connection.close();
-			
-		}catch(Exception e){
-			e.printStackTrace();
-		}*/
+		    //do something with your database
+			entityManager.persist(client);
+		    tx.commit();
+		    entityManager.close();
+		
+		
 	}
 	
 	public boolean login(String login, String password){
@@ -87,3 +69,26 @@ public class ServiceClient implements IServiceClient{
 		return password.equals(cli.getPassword());
 	}
 }
+
+/*try{
+
+ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContextJMS.xml");
+QueueConnectionFactory factory = (QueueConnectionFactory) applicationContext.getBean("connectionFactory");
+
+Queue queue = (Queue) applicationContext.getBean("queue");
+// connection au message broker
+QueueConnection connection = factory.createQueueConnection();
+// ouvrir session sans transaction (1 seul message) et acquitement automatique
+QueueSession session = connection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
+connection.start();
+// cr�er et envoyer message
+TextMessage message = session.createTextMessage("bonjour");
+QueueSender sender = session.createSender(queue);
+sender.send(message);
+
+session.close();
+connection.close();
+
+}catch(Exception e){
+e.printStackTrace();
+}*/

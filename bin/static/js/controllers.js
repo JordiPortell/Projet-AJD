@@ -1,6 +1,6 @@
 'use strict';
 
-var VenteControllers = angular.module('VenteControllers', []);
+var VenteControllers = angular.module('VenteControllers', ['ngRoute']);
 
 
 
@@ -22,25 +22,37 @@ VenteControllers.controller('BlogCtrl',function($scope,$http,$routeParams) {
  * Controls all other Pages
  */
 
-VenteControllers.controller('NewClientCtrl',function($scope,$http,$routeParams) {
-	console.log($scope.nom);
-	$http.post('http://localhost:8080/inscription',$scope.name,$scope.prenom,$scope.adresse,$scope.login,$scope.password).
-	  success(function(data, status, headers, config) {
-			//$scope.produits=data;
-			//console.log(data);
-		  alert("enregistré");
-	  }).
-	  error(function(data, status, headers, config) {
-	  });
-}
+VenteControllers.controller('NewClientCtrl',function($scope,$http,$routeParams,$location) {
+	
+	$location.path('/');
+	$http.post('http://localhost:8080/inscription',$scope.nom,$scope.prenom,$scope.login,$scope.password,$scope.adresse);
+});
 
 
 
-VenteControllers.controller('PageCtrl',function($scope,$http,$routeParams) {
+VenteControllers.controller('PageCtrl',['$scope','$http','$routeParams','$location',function($scope,$http,$routeParams,$location) {
   console.log("Page Controller reporting for duty.");
   
   var _selected;
+$scope.choisirVoiture = function(nom,prenom,adresse,login,password) {
+	/* var nom = String($scope.nom);
+     var adresse = String($scope.adresse);
+     var login = String($scope.login);
+     var password = String($scope.password);
+	 var prenom = String($scope.prenom);
+	 */
+	var tab = [];
+	
+	 tab.push(nom);
+	 tab.push(prenom);
+	 tab.push(adresse);
+	 tab.push(login);
+	 tab.push(password);
+	 console.log(tab);
 
+	$http.post('http://localhost:8080/inscription',tab);	
+	 $location.path('/');
+}
   $scope.selected = undefined;
   $scope.states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Dakota', 'North Carolina', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
   // Any function returning a promise object can be used to load values asynchronously
@@ -83,9 +95,8 @@ VenteControllers.controller('PageCtrl',function($scope,$http,$routeParams) {
 	  });
 
 
-
  
-});
+}]);
 
 VenteControllers.controller('auth', function ($scope, $location, $cookieStore, authorization, api) {
 	  $scope.title = 'Likeastore. Analytics';
@@ -141,9 +152,6 @@ VenteControllers.controller('ProductCtrl',function($scope,$http,$routeParams) {
 		  }).
 		  error(function(data, status, headers, config) {
 		  });
-
-	
-
 	});
 
 

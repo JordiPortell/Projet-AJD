@@ -2,6 +2,8 @@ package org.descartes.web;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.descartes.domain.Client;
 import org.descartes.domain.Personne;
 import org.descartes.domain.Produit;
@@ -48,20 +50,17 @@ public class RestWebService {
 	public List<?> getallProduct(){
 		return serviceProduit.findAll();
 	}
-	
 
-	
 	@RequestMapping(value = "/inscription", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.OK)
-	public void postClient(@RequestBody String Nom,String Prenom,String adresse,String login, String password){
-		serviceClient.addClient(Nom,Prenom,adresse,login,password);
+	public void postClient(@RequestBody List<String> tab){
+		serviceClient.addClient(tab.get(0),tab.get(1),tab.get(2), tab.get(3), tab.get(4));
 	}
 	
 	@RequestMapping(value = "/authentification", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.OK)
-	public void login(@RequestBody String login,String password){
+	public void login(HttpServletRequest request,@RequestBody String login,String password){
 		System.out.println(login);
 		serviceClient.login(login,password);
 	}
-	
 }

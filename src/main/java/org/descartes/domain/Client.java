@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +19,7 @@ public class Client {
 	private String typeAbonnement;
 	private String login;
 	private String password;
-	private List<Commande> ListCommande= new ArrayList();
+	private List<Commande> ListCommande= new ArrayList<Commande>();
 	
 	public String getTypeAbonnement() {
 		return typeAbonnement;
@@ -39,11 +40,12 @@ public class Client {
 		this.prenom = prenom;
 		this.adresse = adresse;
 	}
-	public Client(String nom, String prenom, String adresse, String login, String password) {
+	public Client(String nom, String prenom, String adresse, String login, String password, String abonnement) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.adresse = adresse;
+		this.typeAbonnement= abonnement;
 		this.login = login;
 		this.password = password;
 	}

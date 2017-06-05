@@ -11,6 +11,7 @@ public interface IServiceClient {
 	public List<?> findAll();
 	
 	public void addClient(String Nom,String Prenom,String adresse,String login, String password);
+	//public boolean addClient(String Nom);
 	
 	public boolean login(String login, String password);
 }
