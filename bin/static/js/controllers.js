@@ -30,9 +30,9 @@ VenteControllers.controller('NewClientCtrl',function($scope,$http,$routeParams,$
 
 
 
-VenteControllers.controller('PageCtrl',['$scope','$http','$routeParams','$location',function($scope,$http,$routeParams,$location) {
+VenteControllers.controller('PageCtrl',['$scope','$http','$routeParams','$location','$rootScope',function($scope,$http,$routeParams,$location,$rootScope) {
   console.log("Page Controller reporting for duty.");
-  
+  console.log($rootScope.globals.currentUser.username);
   var _selected;
 $scope.Inscription = function(nom,prenom,adresse,login,password) {
 	var tab = [];
@@ -141,7 +141,7 @@ VenteControllers.controller('ProductCtrl',function($scope,$http,$routeParams) {
 	  console.log($routeParams.id);
 		$http.get('http://localhost:8080/product/'+$routeParams.id).
 		  success(function(data, status, headers, config) {
-				$scope.produits=data;
+				$scope.produit=data;
 				console.log(data);
 		  }).
 		  error(function(data, status, headers, config) {
