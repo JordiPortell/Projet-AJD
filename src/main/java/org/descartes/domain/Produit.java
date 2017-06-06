@@ -1,9 +1,11 @@
 package org.descartes.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Produit {
@@ -79,7 +81,7 @@ public double getPrix() {
 public void setPrix(double prix) {
 	this.Prix = prix;
 }
-
+@OneToOne(cascade={CascadeType.MERGE,CascadeType.PERSIST})
 public Origine getOrigineProduit() {
 	return OrigineProduit;
 }
