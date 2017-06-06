@@ -30,6 +30,7 @@ VenteControllers.controller('NewClientCtrl',function($scope,$http,$routeParams,$
 
 
 
+<<<<<<< HEAD
 VenteControllers.controller('PageCtrl',['$scope','$http','$routeParams','$location',function($scope,$http,$routeParams,$location) {
 	console.log("Page Controller reporting for duty.");
   
@@ -37,6 +38,11 @@ VenteControllers.controller('PageCtrl',['$scope','$http','$routeParams','$locati
 	var _selected;
 	$scope.choisirVoiture = function(nom,prenom,adresse,login,password) {
 =======
+=======
+VenteControllers.controller('PageCtrl',['$scope','$http','$routeParams','$location','$rootScope',function($scope,$http,$routeParams,$location,$rootScope) {
+  console.log("Page Controller reporting for duty.");
+  console.log($rootScope.globals.currentUser.username);
+>>>>>>> origin/master
   var _selected;
 $scope.Inscription = function(nom,prenom,adresse,login,password) {
 >>>>>>> origin/master
