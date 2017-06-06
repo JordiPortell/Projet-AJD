@@ -33,8 +33,13 @@ VenteControllers.controller('NewClientCtrl',function($scope,$http,$routeParams,$
 VenteControllers.controller('PageCtrl',['$scope','$http','$routeParams','$location',function($scope,$http,$routeParams,$location) {
 	console.log("Page Controller reporting for duty.");
   
+<<<<<<< HEAD
 	var _selected;
 	$scope.choisirVoiture = function(nom,prenom,adresse,login,password) {
+=======
+  var _selected;
+$scope.Inscription = function(nom,prenom,adresse,login,password) {
+>>>>>>> origin/master
 	var tab = [];
 	tab.push(nom);
 	tab.push(prenom);

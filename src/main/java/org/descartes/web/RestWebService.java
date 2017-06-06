@@ -61,9 +61,9 @@ public class RestWebService {
 	
 	@RequestMapping(value = "/authentification", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.OK)
-	public void login(HttpServletRequest request,@RequestBody String login,String password){
-		System.out.println(login);
-		serviceClient.login(login,password);
+	public boolean login(HttpServletRequest request,@RequestBody List<String> tab){
+		System.out.println(tab.get(0));
+		return serviceClient.login(tab.get(0),tab.get(1));
 	}
 	
 	@RequestMapping(value = "/origine", method = RequestMethod.GET)
