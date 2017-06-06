@@ -30,22 +30,14 @@ VenteControllers.controller('NewClientCtrl',function($scope,$http,$routeParams,$
 
 
 
-<<<<<<< HEAD
-VenteControllers.controller('PageCtrl',['$scope','$http','$routeParams','$location',function($scope,$http,$routeParams,$location) {
-	console.log("Page Controller reporting for duty.");
-  
-<<<<<<< HEAD
-	var _selected;
-	$scope.choisirVoiture = function(nom,prenom,adresse,login,password) {
-=======
-=======
+
 VenteControllers.controller('PageCtrl',['$scope','$http','$routeParams','$location','$rootScope',function($scope,$http,$routeParams,$location,$rootScope) {
   console.log("Page Controller reporting for duty.");
   console.log($rootScope.globals.currentUser.username);
->>>>>>> origin/master
+
   var _selected;
 $scope.Inscription = function(nom,prenom,adresse,login,password) {
->>>>>>> origin/master
+
 	var tab = [];
 	tab.push(nom);
 	tab.push(prenom);
@@ -61,8 +53,6 @@ $scope.Inscription = function(nom,prenom,adresse,login,password) {
   $scope.selected = undefined;
   
 
-  
-  $scope.states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Dakota', 'North Carolina', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
   // Any function returning a promise object can be used to load values asynchronously
   $scope.getLocation = function(val) {
     return $http.get('//maps.googleapis.com/maps/api/geocode/json', {
