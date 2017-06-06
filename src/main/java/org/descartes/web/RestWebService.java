@@ -37,7 +37,7 @@ public class RestWebService {
 	}
 	
 	
-	@RequestMapping(value = "/produit/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/product/{id}", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
 	public Produit getProduit(@PathVariable("id") long id){

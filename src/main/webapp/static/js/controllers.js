@@ -147,7 +147,7 @@ VenteControllers.controller('ProductCtrl',function($scope,$http,$routeParams) {
 	  console.log($routeParams.id);
 		$http.get('http://localhost:8080/product/'+$routeParams.id).
 		  success(function(data, status, headers, config) {
-				$scope.produits=data;
+				$scope.produit=data;
 				console.log(data);
 		  }).
 		  error(function(data, status, headers, config) {

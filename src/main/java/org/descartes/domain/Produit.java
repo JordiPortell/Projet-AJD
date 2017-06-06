@@ -80,6 +80,14 @@ public void setPrix(double prix) {
 	this.Prix = prix;
 }
 
+public Origine getOrigineProduit() {
+	return OrigineProduit;
+}
+
+public void setOrigineProduit(Origine origineProduit) {
+	OrigineProduit = origineProduit;
+}
+
 
 
 }

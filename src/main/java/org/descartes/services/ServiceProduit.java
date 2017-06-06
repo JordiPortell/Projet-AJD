@@ -26,7 +26,6 @@ EntityManager entityManager;
 		Query query = entityManager.createNativeQuery(sql, Produit.class);
 		query.setParameter(1, id);
 		Produit produit = (Produit) query.getSingleResult();
-		
 		return produit;
 	}
 	
