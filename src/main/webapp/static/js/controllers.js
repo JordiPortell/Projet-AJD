@@ -31,29 +31,26 @@ VenteControllers.controller('NewClientCtrl',function($scope,$http,$routeParams,$
 
 
 VenteControllers.controller('PageCtrl',['$scope','$http','$routeParams','$location',function($scope,$http,$routeParams,$location) {
-  console.log("Page Controller reporting for duty.");
+	console.log("Page Controller reporting for duty.");
   
-  var _selected;
-$scope.choisirVoiture = function(nom,prenom,adresse,login,password) {
-	/* var nom = String($scope.nom);
-     var adresse = String($scope.adresse);
-     var login = String($scope.login);
-     var password = String($scope.password);
-	 var prenom = String($scope.prenom);
-	 */
+	var _selected;
+	$scope.choisirVoiture = function(nom,prenom,adresse,login,password) {
 	var tab = [];
-	
-	 tab.push(nom);
-	 tab.push(prenom);
-	 tab.push(adresse);
-	 tab.push(login);
-	 tab.push(password);
-	 console.log(tab);
+	tab.push(nom);
+	tab.push(prenom);
+	tab.push(adresse);
+	tab.push(login);
+	tab.push(password);
+	console.log(tab);
 
 	$http.post('http://localhost:8080/inscription',tab);	
-	 $location.path('/');
+	$location.path('/');
 }
+	
   $scope.selected = undefined;
+  
+
+  
   $scope.states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Dakota', 'North Carolina', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
   // Any function returning a promise object can be used to load values asynchronously
   $scope.getLocation = function(val) {
@@ -89,7 +86,6 @@ $scope.choisirVoiture = function(nom,prenom,adresse,login,password) {
 	$http.get('http://localhost:8080/produit/').
 	  success(function(data, status, headers, config) {
 			$scope.produits=data;
-			console.log(data);
 	  }).
 	  error(function(data, status, headers, config) {
 	  });
@@ -142,16 +138,53 @@ VenteControllers.factory('api', function ($http, $cookies) {
 	  };
 	});
 
+
+//******************** PRODUCT CTRL
 VenteControllers.controller('ProductCtrl',function($scope,$http,$routeParams) {
 	  console.log("Page Controller reporting for duty.");
 	  console.log($routeParams.id);
 		$http.get('http://localhost:8080/product/'+$routeParams.id).
 		  success(function(data, status, headers, config) {
 				$scope.produit=data;
-				console.log(data);
 		  }).
 		  error(function(data, status, headers, config) {
 		  });
 	});
 
 
+//******************** AUTOCOMPLETE CTRL
+VenteControllers.controller('AutocompleteControl',function($scope,$http) {
+	//**************************** Récupération autocomplete
+	  var states = [];
+	  //récupération des origines
+	  $http.get('http://localhost:8080/origine').
+	  success(function(data, status, headers, config) {
+	  		for(var i=0;i<data.length;i++)
+	  		{
+	  			if(states.indexOf(data[i].libelle)==-1)states.push(data[i].libelle);
+	  		}
+	  		console.log(states);
+	  		
+	  	//récupération des produits
+	  	  $http.get('http://localhost:8080/produit').
+	  	  success(function(data1, status1, headers1, config1) {
+	  	  		for(var i=0;i<data1.length;i++)
+	  	  		{
+	  	  			if(states.indexOf(data1[i].libelle)==-1)states.push(data1[i].libelle);
+	  	  			if(states.indexOf(data1[i].type)==-1)states.push(data1[i].type);
+	  	  		}
+	  	  		console.log(states);
+	  	  		
+	  	  		$scope.states=states;
+	  	  }).
+	  	  error(function(data1, status1, headers1, config1) {
+	  	  });
+	  	//**************************** Récupération autocomplete 
+	  		
+	  }).
+	  error(function(data, status, headers, config) {
+	  });
+
+	  
+	  
+	});

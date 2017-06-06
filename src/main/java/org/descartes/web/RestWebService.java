@@ -10,6 +10,7 @@ import org.descartes.domain.Produit;
 import org.descartes.services.IServiceClient;
 import org.descartes.services.IServicePersonne;
 import org.descartes.services.ServiceClient;
+import org.descartes.services.ServiceOrigine;
 import org.descartes.services.ServicePersonne;
 import org.descartes.services.ServiceProduit;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -28,6 +29,7 @@ public class RestWebService {
 	
 	IServiceClient serviceClient = new ServiceClient();
 	ServiceProduit serviceProduit = new ServiceProduit();
+	ServiceOrigine serviceOrigine = new ServiceOrigine();
 
 	@RequestMapping(value = "/client", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
@@ -62,5 +64,12 @@ public class RestWebService {
 	public void login(HttpServletRequest request,@RequestBody String login,String password){
 		System.out.println(login);
 		serviceClient.login(login,password);
+	}
+	
+	@RequestMapping(value = "/origine", method = RequestMethod.GET)
+	@ResponseStatus(HttpStatus.OK)
+	@ResponseBody
+	public List<?> getAllOrigins(){
+		return serviceOrigine.findAll();
 	}
 }
