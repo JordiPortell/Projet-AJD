@@ -34,13 +34,7 @@ VenteControllers.controller('PageCtrl',['$scope','$http','$routeParams','$locati
   console.log("Page Controller reporting for duty.");
   
   var _selected;
-$scope.choisirVoiture = function(nom,prenom,adresse,login,password) {
-	/* var nom = String($scope.nom);
-     var adresse = String($scope.adresse);
-     var login = String($scope.login);
-     var password = String($scope.password);
-	 var prenom = String($scope.prenom);
-	 */
+$scope.Inscription = function(nom,prenom,adresse,login,password) {
 	var tab = [];
 	
 	 tab.push(nom);

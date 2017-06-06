@@ -49,7 +49,6 @@ public class ServiceClient implements IServiceClient{
 		System.out.println();
 		String abonnement = "aucun";
 		Client client = new Client(nom,prenom,adresse, login, password,abonnement);
-		
 		EntityTransaction tx = entityManager.getTransaction();
 		tx.begin();
 		
@@ -65,8 +64,11 @@ public class ServiceClient implements IServiceClient{
 		List<Client> liste = entityManager.createQuery( "SELECT p FROM Client p WHERE p.login LIKE :namePerson" )
 				.setParameter( "namePerson", login)
 				.getResultList();
+		if(liste.size()>0){
 		Client cli =liste.get(0);
 		return password.equals(cli.getPassword());
+		}
+		return false;
 	}
 }
 

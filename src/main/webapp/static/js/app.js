@@ -27,6 +27,8 @@ angular.module('tutorialWebApp', [
     .otherwise({ redirectTo: '/login' });
 }])
 
+
+
 .run(['$rootScope', '$location', '$cookieStore', '$http',
  function ($rootScope, $location, $cookieStore, $http) {
      // keep user logged in after page refresh
@@ -34,12 +36,25 @@ angular.module('tutorialWebApp', [
      if ($rootScope.globals.currentUser) {
          $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
      }
-
+     
      $rootScope.$on('$locationChangeStart', function (event, next, current) {
-         // redirect to login page if not logged in
-         if ($location.path() == '/inscription' ) {
-             //&& !$rootScope.globals.currentUser
-        	 $location.path('/');
+         // redirect to login page if not logged in and trying to access a restricted page
+         var restrictedPage = $.inArray($location.path(), ['/login', '/register']) === -1;
+         var loggedIn = $rootScope.globals.currentUser;
+         console.log(loggedIn);
+         if (restrictedPage && !loggedIn) {
+             $location.path('/login');
          }
+
+     /*$rootScope.$on('$locationChangeStart', function (event, next, current) {
+         // redirect to login page if not logged in
+    	 var restrictedPage = $.inArray($location.path(), ['/login', '/register']) === -1;
+         var loggedIn = $rootScope.globals.currentUser;
+    	 $location.path('/login');
+    	 console.log(restrictedPage);
+         if (restrictedPage && !loggedIn ) {
+             //&& !$rootScope.globals.currentUser
+        
+         }*/
      });
  }]);
