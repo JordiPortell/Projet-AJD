@@ -22,14 +22,22 @@ public class AjoutProduits {
 	public void contextLoads() {
 	
 		ServiceProduit servicepro = new ServiceProduit();
-		Origine ori1=new Origine("CorrËze");
+		Origine ori1=new Origine("Corr√®ze");
 		Origine ori2=new Origine("Rhone-Alpe");
-		Produit pro1 = new Produit("La rosette du Chatoux","rosette",8,3.9,"https://i.imgur.com/D34nH3O.jpg",ori1);
-		Produit pro2 = new Produit("La saucisson fumÈ de Snoop Doggy Dog","fumÈ",6.5,3.9,"https://i.imgur.com/D34nH3O.jpg",ori1);
-		Produit pro3 = new Produit("Saucisson bien dur ‡ la noisette","noisette",5.99,4.1,"https://i.imgur.com/j7joFKJ.jpg",ori2);
+		Origine ori3=new Origine("Jura");
+		Origine ori4=new Origine("Poitou");
+		Produit pro1 = new Produit("La rosette du Chatoux","rosette",8,3.9,"https://i.imgur.com/jdBVYXM.jpg",ori1);
+		Produit pro2 = new Produit("La saucisson fum√© de Jacquie","fum√©",6.5,3.9,"https://i.imgur.com/gjcaHLD.jpg",ori1);
+		Produit pro3 = new Produit("Saucisson du Rhone-Alpe √† la noisette","noisette",5.99,4.1,"https://i.imgur.com/RyohsMn.jpg",ori2);
+		Produit pro4 = new Produit("Le jurassique","√† cuire",6.1,2.8,"https://i.imgur.com/M4KXyNl.jpg",ori3);
+		Produit pro5 = new Produit("Le genepi de Marie-Louise","aromatis√©",7.15,4.8,"https://i.imgur.com/A8lUIHX.jpg",ori3);
+		Produit pro6 = new Produit("Le saucisson maigre","maigre",7.15,4.8,"https://i.imgur.com/Oh8zlIt.jpg",ori4);
 		servicepro.addProduit(pro1); 
 		servicepro.addProduit(pro2); 
 		servicepro.addProduit(pro3); 
+		servicepro.addProduit(pro4); 
+		servicepro.addProduit(pro5); 
+		servicepro.addProduit(pro6); 
 	
 		//System.out.println(pro1.toString());
 	}

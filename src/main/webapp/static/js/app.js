@@ -19,6 +19,7 @@ angular.module('tutorialWebApp', [
   	//.when("/inscription", {templateUrl: "partials/home.html", controller: "NewClientCtrl"})
 	.when("/product", {templateUrl: "partials/product.html", controller: "PageCtrl"})
     .when("/product/:id", {templateUrl: "partials/product.html", controller: "ProductCtrl"})
+    .when("/search/:search", {templateUrl: "partials/search.html", controller: "SearchCtrl"})
 	.when("/client", {templateUrl: "partials/home.html", controller: "PageCtrl"})
 	.when("/register", {templateUrl: "modules/authentication/views/register.html", controller: "PageCtrl"})
     .when("/subscription", {templateUrl: "partials/subscription.html", controller: "PageCtrl"})

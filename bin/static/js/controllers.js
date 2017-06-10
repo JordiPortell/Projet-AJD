@@ -142,7 +142,6 @@ VenteControllers.factory('api', function ($http, $cookies) {
 
 //******************** PRODUCT CTRL
 VenteControllers.controller('ProductCtrl',function($scope,$http,$routeParams) {
-	  console.log("Page Controller reporting for duty.");
 	  console.log($routeParams.id);
 		$http.get('http://localhost:8080/product/'+$routeParams.id).
 		  success(function(data, status, headers, config) {
@@ -186,6 +185,16 @@ VenteControllers.controller('AutocompleteControl',function($scope,$http) {
 	  error(function(data, status, headers, config) {
 	  });
 
-	  
-	  
 	});
+
+//******************** SEARCH CTRL
+VenteControllers.controller('SearchCtrl',function($scope,$http,$routeParams) {
+	  console.log($routeParams.id);
+		$http.get('http://localhost:8080/search/'+$routeParams.search).
+		  success(function(data, status, headers, config) {
+				$scope.produits=data;
+		  }).
+		  error(function(data, status, headers, config) {
+		  });
+	});
+

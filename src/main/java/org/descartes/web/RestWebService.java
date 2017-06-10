@@ -13,6 +13,7 @@ import org.descartes.services.ServiceClient;
 import org.descartes.services.ServiceOrigine;
 import org.descartes.services.ServicePersonne;
 import org.descartes.services.ServiceProduit;
+import org.descartes.services.ServiceSearch;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,6 +31,7 @@ public class RestWebService {
 	IServiceClient serviceClient = new ServiceClient();
 	ServiceProduit serviceProduit = new ServiceProduit();
 	ServiceOrigine serviceOrigine = new ServiceOrigine();
+	ServiceSearch serviceSearch = new ServiceSearch();
 
 	@RequestMapping(value = "/client", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
@@ -71,5 +73,12 @@ public class RestWebService {
 	@ResponseBody
 	public List<?> getAllOrigins(){
 		return serviceOrigine.findAll();
+	}
+	
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	@ResponseStatus(HttpStatus.OK)
+	@ResponseBody
+	public List<?> getSearch(@PathVariable("search") String search){
+		return serviceSearch.findAll(search);
 	}
 }
