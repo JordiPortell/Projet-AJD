@@ -28,11 +28,63 @@ VenteControllers.controller('NewClientCtrl',function($scope,$http,$routeParams,$
 	$http.post('http://localhost:8080/inscription',$scope.nom,$scope.prenom,$scope.login,$scope.password,$scope.adresse);
 });
 
+VenteControllers.controller('SubCtrl',['$scope','$http','$routeParams','$location','$rootScope',function($scope,$http,$routeParams,$location,$rootScope) {
 
+	$scope.user=$rootScope.globals.currentUser.username;
+
+	$scope.Abonnemet = function(id) {
+		console.log(id);
+		console.log($scope.user);
+		var tab = [];
+		tab.push(id.toString());
+		tab.push($scope.user);
+		console.log(tab);
+		$http.post('http://localhost:8080/subscription/',tab);
+		$location.path('/');
+	}
+	  $scope.getLocation = function(val) {
+	    return $http.get('//maps.googleapis.com/maps/api/geocode/json', {
+	      params: {
+	        address: val,
+	        sensor: false
+	      }
+	    }).then(function(response){
+	      return response.data.results.map(function(item){
+	        return item.formatted_address;
+	      });
+	    });
+	  };
+
+	  $scope.ngModelOptionsSelected = function(value) {
+	    if (arguments.length) {
+	      _selected = value;
+	    } else {
+	      return _selected;
+	    }
+	  };
+
+	  $scope.modelOptions = {
+	    debounce: {
+	      default: 500,
+	      blur: 250
+	    },
+	    getterSetter: true
+	  };
+
+
+		$http.get('http://localhost:8080/produit/').
+		  success(function(data, status, headers, config) {
+				$scope.produits=data;
+		  }).
+		  error(function(data, status, headers, config) {
+		  });
+
+
+	 
+	}]);
 
 VenteControllers.controller('PageCtrl',['$scope','$http','$routeParams','$location','$rootScope',function($scope,$http,$routeParams,$location,$rootScope) {
   console.log("Page Controller reporting for duty.");
-  console.log($rootScope.globals.currentUser.username);
 
   var _selected;
 $scope.Inscription = function(nom,prenom,adresse,login,password) {
@@ -48,6 +100,7 @@ $scope.Inscription = function(nom,prenom,adresse,login,password) {
 	$http.post('http://localhost:8080/inscription',tab);	
 	$location.path('/');
 }
+
 	
   $scope.selected = undefined;
   

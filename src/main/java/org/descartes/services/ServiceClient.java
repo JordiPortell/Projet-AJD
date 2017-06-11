@@ -60,6 +60,13 @@ public class ServiceClient implements IServiceClient{
 		
 	}
 	
+	public Client findClientbylogin(String login){
+		List<Client> liste = entityManager.createQuery( "SELECT p FROM Client p WHERE p.login LIKE :namePerson" )
+				.setParameter( "namePerson", login)
+				.getResultList();
+		return (Client) liste.get(0);
+	}
+	
 	public boolean login(String login, String password){
 		List<Client> liste = entityManager.createQuery( "SELECT p FROM Client p WHERE p.login LIKE :namePerson" )
 				.setParameter( "namePerson", login)
@@ -69,6 +76,12 @@ public class ServiceClient implements IServiceClient{
 		return password.equals(cli.getPassword());
 		}
 		return false;
+	}
+	
+	public boolean Abonnement(String abonnemennt,String login){
+		Client cli= this.findClientbylogin(login);
+		cli.setTypeAbonnement(abonnemennt);
+		return true;
 	}
 }
 

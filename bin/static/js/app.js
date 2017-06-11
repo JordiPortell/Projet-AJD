@@ -22,7 +22,8 @@ angular.module('tutorialWebApp', [
     .when("/search/:search", {templateUrl: "partials/search.html", controller: "SearchCtrl"})
 	.when("/client", {templateUrl: "partials/home.html", controller: "PageCtrl"})
 	.when("/register", {templateUrl: "modules/authentication/views/register.html", controller: "PageCtrl"})
-    .when("/subscription", {templateUrl: "partials/subscription.html", controller: "PageCtrl"})
+    .when("/subscription", {templateUrl: "partials/subscription.html", controller: "SubCtrl"})
+    .when("/abonnement/:nb/:login", {templateUrl: "partials/home.html", controller: "PageCtrl"})
    // .when("/inscription", {templateUrl: "partials/home.html", controller: "NewClientCtrl"})
     // else 404
     .otherwise({ redirectTo: '/login' });
@@ -40,11 +41,11 @@ angular.module('tutorialWebApp', [
      
      $rootScope.$on('$locationChangeStart', function (event, next, current) {
          // redirect to login page if not logged in and trying to access a restricted page
-         var restrictedPage = $.inArray($location.path(), ['/login', '/register']) === -1;
+         var restrictedPage = $.inArray($location.path(), ['/subscription']) === -1;
          var loggedIn = $rootScope.globals.currentUser;
         // console.log(loggedIn);
-         if (restrictedPage && !loggedIn) {
-             $location.path('/login');
+         if (!restrictedPage && !loggedIn) {
+            $location.path('/login');
          }
 
      /*$rootScope.$on('$locationChangeStart', function (event, next, current) {

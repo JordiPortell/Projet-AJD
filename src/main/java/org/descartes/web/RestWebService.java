@@ -48,6 +48,15 @@ public class RestWebService {
 		return serviceProduit.findProduit(id);
 	}
 	
+	@RequestMapping(value = "/subscription/", method = RequestMethod.POST)
+	@ResponseStatus(HttpStatus.OK)
+	@ResponseBody
+	public boolean setSubscription(@RequestBody List<String> tab){
+		System.out.println(tab.get(1));
+		 serviceClient.Abonnement(tab.get(0),tab.get(1));
+		 return true;
+	}
+	
 	@RequestMapping(value = "/produit", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
