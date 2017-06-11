@@ -14,4 +14,6 @@ public interface IServiceClient {
 	//public boolean addClient(String Nom);
 	
 	public boolean login(String login, String password);
+	
+	public boolean Abonnement(String abonnemennt,String login);
 }
