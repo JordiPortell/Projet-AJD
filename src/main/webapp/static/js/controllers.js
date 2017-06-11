@@ -30,7 +30,6 @@ VenteControllers.controller('NewClientCtrl',function($scope,$http,$routeParams,$
 
 
 
-
 VenteControllers.controller('PageCtrl',['$scope','$http','$routeParams','$location','$rootScope',function($scope,$http,$routeParams,$location,$rootScope) {
   console.log("Page Controller reporting for duty.");
   console.log($rootScope.globals.currentUser.username);
@@ -53,7 +52,6 @@ $scope.Inscription = function(nom,prenom,adresse,login,password) {
   $scope.selected = undefined;
   
 
-  // Any function returning a promise object can be used to load values asynchronously
   $scope.getLocation = function(val) {
     return $http.get('//maps.googleapis.com/maps/api/geocode/json', {
       params: {
