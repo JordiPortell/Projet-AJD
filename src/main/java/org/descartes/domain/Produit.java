@@ -92,5 +92,9 @@ public void setOrigineProduit(Origine origineProduit) {
 }
 
 
+public String toString(){
+	return "id:"+this.idProd+" ; libelle:"+this.Libelle+" ; type:"+this.Type+" ; prix:"+this.Prix+" ; note:"+this.Note;
+}
+
 
 }

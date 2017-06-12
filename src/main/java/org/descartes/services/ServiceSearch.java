@@ -23,9 +23,18 @@ EntityManager entityManager;
 	
 	
 	public List<?> findAll(String query){
-		List liste = entityManager.createQuery( "SELECT p FROM PRODUIT p WHERE p.LIBELLE LIKE '%"+query+"'% OR p.TYPE LIKE '%"+query+"%' "
-				+ "OR p.ORIGINEPRODUIT_ID IN (SELECT o.LIBELLE FROM ORIGINE o WHERE o.LIBELLE LIKE '%"+query+"%')")
-				.getResultList();
+		String Query = new String("'%"+query.toUpperCase()+"%'");
+		Query = ""
+				+ "SELECT * "
+				+ "FROM PRODUIT p "
+				+ "WHERE UPPER(p.LIBELLE) LIKE "+Query+" "
+				+ "OR UPPER(p.TYPE) LIKE "+Query+" "
+				+ "OR p.ORIGINEPRODUIT_ID IN "
+				+ "(SELECT o.ID "
+				+ "FROM ORIGINE o "
+				+ "WHERE UPPER(o.LIBELLE) LIKE "+Query+")";
+		Query req = entityManager.createNativeQuery(Query, Produit.class);
+		List liste = (List) req.getResultList();
 		return liste;
 	}
 	

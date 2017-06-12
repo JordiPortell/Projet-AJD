@@ -84,7 +84,7 @@ public class RestWebService {
 		return serviceOrigine.findAll();
 	}
 	
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	@RequestMapping(value = "/search/{search}", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
 	public List<?> getSearch(@PathVariable("search") String search){
