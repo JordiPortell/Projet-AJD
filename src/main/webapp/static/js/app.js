@@ -21,6 +21,7 @@ angular.module('tutorialWebApp', [
     .when("/product/:id", {templateUrl: "partials/product.html", controller: "ProductCtrl"})
     .when("/search/:search", {templateUrl: "partials/search.html", controller: "SearchCtrl"})
     .when("/search", {templateUrl: "partials/search.html", controller: "PageCtrl"})
+    .when("/message/:message", {templateUrl: "partials/message.html", controller: "MsgCtrl"})
 	.when("/client", {templateUrl: "partials/home.html", controller: "PageCtrl"})
 	.when("/register", {templateUrl: "modules/authentication/views/register.html", controller: "PageCtrl"})
     .when("/subscription", {templateUrl: "partials/subscription.html", controller: "SubCtrl"})

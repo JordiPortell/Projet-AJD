@@ -8,7 +8,7 @@
         <div class="col-lg-12">
             <h1 class="page-header">Résultat de la recherche "{{search}}"</h1>
             <ol class="breadcrumb">
-                <li><a href="/">Accueil</a>
+                <li><a href="#/">Accueil</a>
                 </li>
                 <li class="active">Recherche</li>
             </ol>
@@ -19,9 +19,9 @@
     <div ng-repeat="produit in produits"> 
 	    <div class="row">
 	            <div class="col-lg-4 col-md-4">
-	                <a href="portfolio-item.html">
-						<img class="img-responsive img-home-portfolio" src={{produit.imagePATH}}>
-					</a>
+	                <a href="#/product/{{produit.id}}">
+                   		<img class="img-responsive img-home-portfolio" ng-src="{{produit.imagePATH}}">
+                	</a>
 	            </div>
 	            
 	            <div class="col-lg-4 col-md-4">

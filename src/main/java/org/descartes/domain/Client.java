@@ -122,7 +122,7 @@ public class Client {
 
 	@Override
 	public String toString() {
-		return "Client [nom=" + nom + "]";
+		return "nom: "+this.nom+" ; prenom: "+this.prenom+" ; adresse: "+this.adresse+" ; abonnement:"+this.typeAbonnement;
 	}
 	
 	

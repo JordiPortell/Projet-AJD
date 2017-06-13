@@ -80,7 +80,9 @@ public class ServiceClient implements IServiceClient{
 	
 	public boolean Abonnement(String abonnemennt,String login){
 		Client cli= this.findClientbylogin(login);
+		entityManager.getTransaction().begin();
 		cli.setTypeAbonnement(abonnemennt);
+		entityManager.getTransaction().commit();
 		return true;
 	}
 }

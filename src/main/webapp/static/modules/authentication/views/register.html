@@ -1,59 +1,62 @@
+<br />
+<br />
+<br />
+<br />
 <form method="post" ng-submit="Inscription(nom,prenom,adresse,login,password)" ng-controller="PageCtrl">
-<div class="container">
-
-<div class="row">
-<div class="col-md-offset-2 col-md-8">
-<h1> Inscription <br/> <small> Merci de renseigner vos informations </small></h1>
-</div>
-</div>
-
-<div class="row">
-<div class="col-md-offset-2 col-md-3">
-<div class="form-group">
-<label for="Nom">Nom</label>
-<input type="text" class="form-control" id="nom" ng-model="nom" name="nom">
-</div>
-</div>
-<div class="col-md-offset-1 col-md-3">
-<div class="form-group">
-<label for="Prenom">Prénom</label>
-<input type="text" class="form-control" id="prenom" ng-model="prenom"  name="prenom" required>
-</div>
-</div>
-</div>
-
-<div class="row">
-<div class="col-md-offset-2 col-md-7">
-<div class="form-group">
-<label for="adresse">Adresse</label>
-<input type="text" class="form-control" id="adresse" ng-model="adresse" name="adresse" placeholder="adresse" required>
-</div>
-</div>
-</div>
-
-<div class="row">
-<div class="col-md-offset-2 col-md-3">
-<div class="form-group">
-<label for="login">login</label>
-<input type="text" class="form-control" id="login" name="login" ng-model="login" placeholder="login" required>
-</div>
-</div>
-<div class="col-md-offset-1 col-md-3">
-<div class="form-group">
-<label for="Prenom">Mot de passe</label>
-<input type="password" class="form-control" id="password" name="password" ng-model="password" placeholder="Mot de passe" required>
-</div>
-</div>
-</div>
-
-
-<br/>
-<div class="row">
-<div class="col-md-offset-5 col-md-1">
-
-<input type="submit" >
-</div>
-</div>
-
-</div>
+	<div class="container">
+	
+		<div class="row">
+			<div class="col-md-offset-2 col-md-8">
+				<h1> Inscription <br/> <small> Merci de renseigner vos informations </small></h1>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-offset-2 col-md-3">
+				<div class="form-group">
+					<label for="Nom">Nom</label>
+					<input type="text" class="form-control" id="nom" ng-model="nom" name="nom">
+				</div>
+			</div>
+			<div class="col-md-offset-1 col-md-3">
+				<div class="form-group">
+					<label for="Prenom">Prénom</label>
+					<input type="text" class="form-control" id="prenom" ng-model="prenom"  name="prenom" required>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-offset-2 col-md-7">
+				<div class="form-group">
+					<label for="adresse">Adresse</label>
+					<input type="text" class="form-control" id="adresse" ng-model="adresse" name="adresse" placeholder="adresse" required>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-offset-2 col-md-3">
+				<div class="form-group">
+					<label for="login">login</label>
+					<input type="text" class="form-control" id="login" name="login" ng-model="login" placeholder="login" required>
+				</div>
+			</div>
+			<div class="col-md-offset-1 col-md-3">
+				<div class="form-group">
+					<label for="Prenom">Mot de passe</label>
+					<input type="password" class="form-control" id="password" name="password" ng-model="password" placeholder="Mot de passe" required>
+				</div>
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div class="row">
+			<div class="col-md-offset-5 col-md-1">
+				<input class="btn btn-primary" type="submit" >
+			</div>
+		</div>
+	
+	</div>
 </form>

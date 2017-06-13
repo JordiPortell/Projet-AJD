@@ -1,78 +1,79 @@
 <br />
 <br />
 <br />
-<br /> 
 <br />
 <br />
 
-<div class="section">
 
-    <div class="container">
+	<div class="section">
+	
+	    <div class="container">
+	
+	        <div class="row">
+	            <div class="col-lg-4 col-md-4">
+	                <p>Achetez et faites-vous livrer des produits artisanaux savoureux en quelques clics ! Profitez aussi de nos offres d'abonnement</p>
+	            </div>
+	            <div class="col-lg-4 col-md-4">
+	                <p>Une grande varieté de saucissons pour toutes les envies : saucisson nature, fumé, aux noisettes, rosette; il y en a pour tous les goûts !</p>
+	            </div>
+	            <div class="col-lg-4 col-md-4">
+	                <p>Soutenez les producteurs locaux en choisissant des produits d'origines controlées, issus d'un élevage responsable et éthique</p>
+	            </div>
+	        </div>
+	        <!-- /.row -->
+	
+	    </div>
+	    <!-- /.container -->
+	
+	</div>
+	<!-- /.section -->
+	
+	<div class="section-colored text-center">
+	
+	    <div class="container">
+	
+	        <div class="row">
+	            <div class="col-lg-12">
+	                <h2 class="myTitlte">A la bonne franquette</h2>
+	                <p>Vendeur de saucisson en ligne</p>
+	                <hr>
+	            </div>
+	        </div>
+	        <!-- /.row -->
+	
+	    </div>
+	    <!-- /.container -->
+	
+	</div>
+	<!-- /.section-colored -->
+	
+	<div class="section">
+	
+	    <div class="container">
+	
+	        <div class="row">
+	            <div class="col-lg-12 text-center">
+	                <h2>Présentation de nos produits du moment</h2>
+	                <hr>
+	            </div>
+	            <div ng-repeat="produit in produits"> 
+	           
+	            <div class="col-lg-4 col-md-4 col-sm-6" >
+	            
+	                <a href="#/product/{{produit.id}}">
+	                    <img class="img-responsive img-home-portfolio" ng-src="{{produit.imagePATH}}">
+	                </a>
+	                
+	             
+	            </div>
+	
+	             </div>
+	        </div>
+	        <!-- /.row -->
+	
+	    </div>
+	    <!-- /.container -->
+	
+	</div>
 
-        <div class="row">
-            <div class="col-lg-4 col-md-4">
-                <p>Achetez et faites-vous livrer des produits artisanaux savoureux en quelques clics ! Profitez aussi de nos offres d'abonnement</p>
-            </div>
-            <div class="col-lg-4 col-md-4">
-                <p>Une grande varieté de saucissons pour toutes les envies : saucisson nature, fumé, aux noisettes, rosette; il y en a pour tous les goûts !</p>
-            </div>
-            <div class="col-lg-4 col-md-4">
-                <p>Soutenez les producteurs locaux en choisissant des produits d'origines controlées, issus d'un élevage responsable et éthique</p>
-            </div>
-        </div>
-        <!-- /.row -->
-
-    </div>
-    <!-- /.container -->
-
-</div>
-<!-- /.section -->
-
-<div class="section-colored text-center">
-
-    <div class="container">
-
-        <div class="row">
-            <div class="col-lg-12">
-                <h2 class="myTitlte">A la bonne franquette</h2>
-                <p>Vendeur de saucisson en ligne</p>
-                <hr>
-            </div>
-        </div>
-        <!-- /.row -->
-
-    </div>
-    <!-- /.container -->
-
-</div>
-<!-- /.section-colored -->
-
-<div class="section">
-
-    <div class="container">
-
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2>Présentation de nos produits du moment</h2>
-                <hr>
-            </div>
-            <div ng-repeat="produit in produits"> 
-           
-            <div class="col-lg-4 col-md-4 col-sm-6">
-            
-                <a href="#/product/{{produit.id}}">
-                    <img class="img-responsive img-home-portfolio" ng-src="{{produit.imagePATH}}">
-                </a>
-                
-             
-            </div>
-
-             </div>
-        </div>
-        <!-- /.row -->
-
-    </div>
-    <!-- /.container -->
-
-</div>
 <br />

@@ -29,13 +29,18 @@ VenteControllers.controller('NewClientCtrl',function($scope,$http,$routeParams,$
 });
 
 
+
+//******************** MESSAGE CTRL
+VenteControllers.controller('MsgCtrl',function($scope,$http,$routeParams,$location,$rootScope) {
+		$scope.msg = $routeParams.message;
+	  
+});
+
+
 //******************** SEARCH CTRL
 VenteControllers.controller('SearchCtrl',function($scope,$http,$routeParams,$location,$rootScope) {
-	  $scope.user=$rootScope.globals.currentUser.username;
-	  console.log('search!!!');
 		$http.get('http://localhost:8080/search/'+$routeParams.search).
 		  success(function(data, status, headers, config) {
-			  console.log('test');
 				$scope.produits=data;
 				$scope.search=$routeParams.search;
 				console.log(data);
@@ -43,24 +48,29 @@ VenteControllers.controller('SearchCtrl',function($scope,$http,$routeParams,$loc
 		  error(function(data, status, headers, config) {
 		  });	
 	  
-	});
-
+});
 
 
 //******************** SUB CTRL
 VenteControllers.controller('SubCtrl',['$scope','$http','$routeParams','$location','$rootScope',function($scope,$http,$routeParams,$location,$rootScope) {
 
 	$scope.user=$rootScope.globals.currentUser.username;
-
+	
 	$scope.Abonnemet = function(id) {
-		console.log(id);
-		console.log($scope.user);
+		var msg;
 		var tab = [];
 		tab.push(id.toString());
 		tab.push($scope.user);
-		console.log(tab);
-		$http.post('http://localhost:8080/subscription/',tab);
-		$location.path('/');
+		$http.post('http://localhost:8080/subscription/',tab).
+		success(function(data, status, headers, config) {
+			msg = 'Abonnement réalisé avec succès';
+			$location.path('/message/'+msg);
+		}).
+		  error(function(data, status, headers, config) {
+			  msg = 'Une erreur est survenue pendant l\'abonnement'
+			  $location.path('/message/'+msg);
+		  });
+		
 	}
 	  $scope.getLocation = function(val) {
 	    return $http.get('//maps.googleapis.com/maps/api/geocode/json', {
@@ -92,24 +102,23 @@ VenteControllers.controller('SubCtrl',['$scope','$http','$routeParams','$locatio
 	  };
 
 
-		$http.get('http://localhost:8080/produit/').
-		  success(function(data, status, headers, config) {
-				$scope.produits=data;
-		  }).
-		  error(function(data, status, headers, config) {
-		  });
-
-
+	$http.get('http://localhost:8080/produit/').
+	  success(function(data, status, headers, config) {
+			$scope.produits=data;
+	  }).
+	  error(function(data, status, headers, config) {
+	  });
 	 
-	}]);
+}]);
 
 
 //******************** PAGE CTRL
 VenteControllers.controller('PageCtrl',['$scope','$http','$routeParams','$location','$rootScope',function($scope,$http,$routeParams,$location,$rootScope) {
 
   var _selected;
-$scope.Inscription = function(nom,prenom,adresse,login,password) {
+  $scope.Inscription = function(nom,prenom,adresse,login,password) {
 
+	var msg;
 	var tab = [];
 	tab.push(nom);
 	tab.push(prenom);
@@ -118,11 +127,18 @@ $scope.Inscription = function(nom,prenom,adresse,login,password) {
 	tab.push(password);
 	console.log(tab);
 
-	$http.post('http://localhost:8080/inscription',tab);	
-	$location.path('/');
-}
+	$http.post('http://localhost:8080/inscription',tab).
+	success(function(data, status, headers, config) {
+		msg = 'Vous êtes désormais inscrit';
+		$location.path('/message/'+msg);
+	}).
+	  error(function(data, status, headers, config) {
+		  msg = 'Une erreur est survenue pendant l\'inscription'
+		  $location.path('/message/'+msg);
+	  });
+  }
 
-$scope.Search = function() {
+  $scope.Search = function() {
 	$location.path('/search/'+$scope.selected);
   }
 	
