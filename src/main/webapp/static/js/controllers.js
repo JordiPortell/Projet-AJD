@@ -43,7 +43,8 @@ VenteControllers.controller('SearchCtrl',function($scope,$http,$routeParams,$loc
 		  success(function(data, status, headers, config) {
 				$scope.produits=data;
 				$scope.search=$routeParams.search;
-				console.log(data);
+				console.log($rootScope);
+				$scope.user = $rootScope.globals.currentUser.username;
 		  }).
 		  error(function(data, status, headers, config) {
 		  });	
